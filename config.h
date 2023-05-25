@@ -3,15 +3,16 @@
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 16;       /* snap pixel */
-static const int showbar            = 0;        /* 0 means no bar */
+static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 0;        /* 0 means bottom bar */
-static const char *fonts[]          = { "ubuntu:size=10" };
-static const char dmenufont[]       = "ubuntu:size=10";
-static const char col_gray1[]       = "#000000";
-static const char col_gray2[]       = "#282828";
-static const char col_gray3[]       = "#ffffff";
-static const char col_gray4[]       = "#ffffff";
-static const char col_cyan[]        = "#cd0000";
+static const int user_bh	    = 16;
+static const char *fonts[]          = { "ubuntu:size=8" };
+static const char dmenufont[]       = "ubuntu:size=8";
+static const char col_gray1[]       = "#121212";
+static const char col_gray2[]       = "#121212"; // grey
+static const char col_gray3[]       = "#f0f0f0";
+static const char col_gray4[]       = "#f0f0f0"; // grey/white
+static const char col_cyan[]        = "#f26711"; // Orange
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
@@ -19,7 +20,7 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", };
+static const char *tags[] = { "[1]", "[2]", "[3]", "[4]", "[5]", "[6]", "[7]", "[8]"};
 
 #define BROWSER "qutebrowser"
 static const Rule rules[] = {
@@ -28,7 +29,7 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
-	{ BROWSER,  NULL,       NULL,       1 << 2,       0,           -1 },
+	{ BROWSER,  NULL,       NULL,       1 << 7,       0,           -1 },
 };
 
 /* layout(s) */
@@ -39,7 +40,7 @@ static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen win
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "[]=",      tile },    /* first entry is default */
+	{ "[T]",      tile },    /* first entry is default */
 	{ "[M]",      monocle },
 };
 
@@ -66,7 +67,7 @@ static const Key keys[] = {
 	{ MODKEY,			XK_b,	   spawn,	   {.v = (const char*[]) {BROWSER,  SEARCH,     NULL}}},
 	{ MODKEY,			XK_y,	   spawn,	   {.v = (const char*[]) {BROWSER, "yewtu.be", 	NULL}}},
 	{ MODKEY,			XK_m,	   spawn,	   {.v = (const char*[]) {TERMINAL, SYSMON,	NULL}}},
-	{ MODKEY|ShiftMask,		XK_b,	   togglebar,	   {1}},
+	{ MODKEY|ShiftMask,		XK_b,	   togglebar,	   {0}},
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
@@ -81,6 +82,11 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
+	TAGKEYS(			XK_4,			   3)
+	TAGKEYS(			XK_5,			   4)
+	TAGKEYS(			XK_6,			   5)
+	TAGKEYS(			XK_7,			   6)
+	TAGKEYS(			XK_8,			   7)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 };
 
