@@ -59,17 +59,27 @@ static const Layout layouts[] = {
 #define TERMINAL "st"
 #define FM	 "vifm"
 #define SYSMON	 "htop"
+#define MYSITE   "torchweb.neocities.org"
+
+/* Note certain key chains are in place to allow for alot more keybinds
+alt + f will allow for dwm function for example quitting dwm or killing a program
+alt + w will allow to open certain pages within a browser */
 
 static const Key keys[] = {
 	/* modifier                     chain key key        function        argument */
 	{ MODKEY,             		-1,       XK_space,  spawn,          {.v = (const char*[]) {TERMINAL, 	       			NULL}}},
 	{ MODKEY,			-1, 	  XK_v,      spawn,	     {.v = (const char*[]) {TERMINAL, FM,      			NULL}}},
+	{ MODKEY,			-1,	  XK_m,	     spawn,	     {.v = (const char*[]) {TERMINAL, SYSMON,			NULL}}},
 	{ MODKEY,			-1,	  XK_b,	     spawn,	     {.v = (const char*[]) {BROWSER,  SEARCH,  	        	NULL}}},
 	{ MODKEY,			XK_w,     XK_y,	     spawn,	     {.v = (const char*[]) {BROWSER, "yewtu.be", 		NULL}}},
+	{ MODKEY,			XK_w,	  XK_l,	     spawn,	     {.v = (const char*[]) {BROWSER, "lemmy.ml",		NULL}}},
 	{ MODKEY,			XK_w,	  XK_c,	     spawn,	     {.v = (const char*[]) {BROWSER, "cboard.cprogramming.com", NULL}}},
-	{ MODKEY,			XK_w,	  XK_o,	     spawn,	     {.v = (const char*[]) {BROWSER, "openbsd.org",		NULL}}},
+	{ MODKEY,			XK_w,	  XK_o,	     spawn,	     {.v = (const char*[]) {BROWSER, "man.openbsd.org",		NULL}}},
 	{ MODKEY,			XK_w,	  XK_g,	     spawn,	     {.v = (const char*[]) {BROWSER, "github.com/africavoid", 	NULL}}},
-	{ MODKEY,			-1,       XK_m,	     spawn,	     {.v = (const char*[]) {TERMINAL, SYSMON,   		NULL}}},
+	{ MODKEY,			XK_w,	  XK_a,	     spawn,	     {.v = (const char*[]) {BROWSER, "wiki.archlinux.org",	NULL}}},
+	{ MODKEY,			XK_w,	  XK_s,	     spawn,	     {.v = (const char*[]) {BROWSER, "suckless.org",		NULL}}},
+	{ MODKEY,			XK_w,	  XK_w,	     spawn,	     {.v = (const char*[]) {BROWSER, "wiby.me",			NULL}}},
+	{ MODKEY,			XK_w,	  XK_m,	     spawn,	     {.v = (const char*[]) {BROWSER, MYSITE,			NULL}}},
 	{ MODKEY,			XK_f,     XK_b,	     togglebar,	     {0}},
 	{ MODKEY,                       -1,	  XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       -1,	  XK_k,      focusstack,     {.i = -1 } },
