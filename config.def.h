@@ -57,6 +57,7 @@ static const Layout layouts[] = {
 
 #define SEARCH   "searx.be"
 #define TERMINAL "st"
+#define TAB_TERM "tabbed -c -r 2 st -w \"\""
 #define FM	 "vifm"
 #define SYSMON	 "htop"
 #define MYSITE   "torchweb.neocities.org"
@@ -68,6 +69,7 @@ alt + w will allow to open certain pages within a browser */
 static const Key keys[] = {
 	/* modifier                     chain key key        function        argument */
 	{ MODKEY,             		-1,       XK_space,  spawn,          {.v = (const char*[]) {TERMINAL, 	       			NULL}}},
+	{ MODKEY|ShiftMask,		-1,	  XK_space,  spawn,	     {.v = (const char*[]) {"tabbed", "-c", "-r", "2", TERMINAL, "-w", """",				NULL}}},
 	{ MODKEY,			-1, 	  XK_v,      spawn,	     {.v = (const char*[]) {TERMINAL, FM,      			NULL}}},
 	{ MODKEY,			-1,	  XK_m,	     spawn,	     {.v = (const char*[]) {TERMINAL, SYSMON,			NULL}}},
 	{ MODKEY,			-1,	  XK_b,	     spawn,	     {.v = (const char*[]) {BROWSER,  SEARCH,  	        	NULL}}},
