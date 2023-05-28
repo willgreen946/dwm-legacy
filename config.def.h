@@ -62,11 +62,14 @@ static const Layout layouts[] = {
 
 static const Key keys[] = {
 	/* modifier                     chain key key        function        argument */
-	{ MODKEY,             		-1,       XK_space,  spawn,          {.v = (const char*[]) {TERMINAL, 	       		NULL}}},
-	{ MODKEY,			-1, 	  XK_v,      spawn,	     {.v = (const char*[]) {TERMINAL, FM,      		NULL}}},
-	{ MODKEY,			-1,	  XK_b,	     spawn,	     {.v = (const char*[]) {BROWSER,  SEARCH,  	        NULL}}},
-	{ MODKEY,			-1,       XK_y,	     spawn,	     {.v = (const char*[]) {BROWSER, "yewtu.be", 	NULL}}},
-	{ MODKEY,			-1,       XK_m,	     spawn,	     {.v = (const char*[]) {TERMINAL, SYSMON,   	NULL}}},
+	{ MODKEY,             		-1,       XK_space,  spawn,          {.v = (const char*[]) {TERMINAL, 	       			NULL}}},
+	{ MODKEY,			-1, 	  XK_v,      spawn,	     {.v = (const char*[]) {TERMINAL, FM,      			NULL}}},
+	{ MODKEY,			-1,	  XK_b,	     spawn,	     {.v = (const char*[]) {BROWSER,  SEARCH,  	        	NULL}}},
+	{ MODKEY,			XK_w,     XK_y,	     spawn,	     {.v = (const char*[]) {BROWSER, "yewtu.be", 		NULL}}},
+	{ MODKEY,			XK_w,	  XK_c,	     spawn,	     {.v = (const char*[]) {BROWSER, "cboard.cprogramming.com", NULL}}},
+	{ MODKEY,			XK_w,	  XK_o,	     spawn,	     {.v = (const char*[]) {BROWSER, "openbsd.org",		NULL}}},
+	{ MODKEY,			XK_w,	  XK_g,	     spawn,	     {.v = (const char*[]) {BROWSER, "github.com/africavoid", 	NULL}}},
+	{ MODKEY,			-1,       XK_m,	     spawn,	     {.v = (const char*[]) {TERMINAL, SYSMON,   		NULL}}},
 	{ MODKEY,			XK_f,     XK_b,	     togglebar,	     {0}},
 	{ MODKEY,                       -1,	  XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       -1,	  XK_k,      focusstack,     {.i = -1 } },
