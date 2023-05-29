@@ -1,3 +1,5 @@
+This is my fork of dwm it is designed for OpenBSD but can be easily ported to linux or freebsd by editing config.mk
+
 dwm - dynamic window manager
 ============================
 dwm is an extremely fast, small, and dynamic window manager for X.
