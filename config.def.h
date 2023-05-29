@@ -9,14 +9,32 @@ static const int user_bh	    = 16;
 static const char *fonts[]          = { "ubuntu:size=8" };
 static const char dmenufont[]       = "ubuntu:size=8";
 static const char col_gray1[]       = "#121212";
-static const char col_gray2[]       = "#121212"; // grey
-static const char col_gray3[]       = "#f0f0f0";
-static const char col_gray4[]       = "#121212"; // grey/white
-static const char col_cyan[]        = "#f2ca30"; // Orange , yellow
+static const char col_gray2[]       = "#121212"; // Grey
+static const char col_gray3[]       = "#f0f0f0"; // White
+static const char col_gray4[]       = "#121212";
+static const char col_cyan[]        = "#f2ca30"; // Yellow
+static const char s_base00[]        = "#f26711"; // Orange
+static const char s_base01[]        = "#121212";
+static const char s_base02[]        = "#121212";
+static const char s_base03[]        = "#f2ca30";
+static const char s_base0[]         = "#eb0028";
+static const char s_base1[]         = "#121212";
+static const char s_base2[]         = "#121212";
+static const char s_base3[]         = "#f0f0f0";
+
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
+	// Yellow Theme
+        { col_gray3, col_gray1, col_gray2 }, /* SchemeNorm orig */
+        { col_gray4, col_cyan,  col_cyan  }, /* SchemeSel orig */
+
+	// Red Theme
+	{ s_base3, s_base2, s_base2 },      /* SchemeNorm dark */
+       	{ s_base2, s_base0, s_base0 },      /* SchemeSel dark */
+	
+	// Orange Theme
+       	{ s_base3, s_base2, s_base2 },     /* SchemeNorm light */
+       	{ s_base2, s_base00, s_base00},      /* SchemeSel light */
 };
 
 /* tagging */
@@ -82,7 +100,9 @@ static const Key keys[] = {
 	{ MODKEY,			XK_w,	  XK_s,	     spawn,	     {.v = (const char*[]) {BROWSER, "suckless.org",		NULL}}},
 	{ MODKEY,			XK_w,	  XK_w,	     spawn,	     {.v = (const char*[]) {BROWSER, "wiby.me",			NULL}}},
 	{ MODKEY,			XK_w,	  XK_m,	     spawn,	     {.v = (const char*[]) {BROWSER, MYSITE,			NULL}}},
+	{ MODKEY,			-1,	  XK_p,	     spawn,	     {.v = (const char*[]) {"dmenu_run",			NULL}}},
 	{ MODKEY,			XK_f,     XK_b,	     togglebar,	     {0}},
+	{ MODKEY,			XK_f,	  XK_s,	     schemeCycle,     {0}},
 	{ MODKEY,                       -1,	  XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       -1,	  XK_k,      focusstack,     {.i = -1 } },
 	{ MODKEY,                       -1,       XK_i,      incnmaster,     {.i = +1 } },
