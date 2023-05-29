@@ -12,7 +12,7 @@ static const char col_gray1[]       = "#121212";
 static const char col_gray2[]       = "#121212"; // Grey
 static const char col_gray3[]       = "#f0f0f0"; // White
 static const char col_gray4[]       = "#121212";
-static const char col_cyan[]        = "#f2ca30"; // Yellow
+static const char col_yellow[]      = "#f2ca30"; // Yellow
 static const char s_base00[]        = "#f26711"; // Orange
 static const char s_base01[]        = "#121212";
 static const char s_base02[]        = "#121212";
@@ -26,7 +26,7 @@ static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	// Yellow Theme
         { col_gray3, col_gray1, col_gray2 }, /* SchemeNorm orig */
-        { col_gray4, col_cyan,  col_cyan  }, /* SchemeSel orig */
+        { col_gray4, col_yellow,  col_yellow  }, /* SchemeSel orig */
 
 	// Red Theme
 	{ s_base3, s_base2, s_base2 },      /* SchemeNorm dark */
@@ -75,11 +75,10 @@ static const Layout layouts[] = {
 
 #define SEARCH   "searx.be"
 #define TERMINAL "st"
-#define TAB_TERM "tabbed -c -r 2 st -w \"\""
 #define FM	 "vifm"
 #define SYSMON	 "htop"
 #define MYSITE   "torchweb.neocities.org"
-
+#define EMAIL_SITE "protonmail.com"
 /* Note certain key chains are in place to allow for alot more keybinds
 alt + f will allow for dwm function for example quitting dwm or killing a program
 alt + w will allow to open certain pages within a browser */
@@ -87,22 +86,32 @@ alt + w will allow to open certain pages within a browser */
 static const Key keys[] = {
 	/* modifier                     chain key key        function        argument */
 	{ MODKEY,             		-1,       XK_space,  spawn,          {.v = (const char*[]) {TERMINAL, 	       			NULL}}},
-	{ MODKEY|ShiftMask,		-1,	  XK_space,  spawn,	     {.v = (const char*[]) {"tabbed", "-c", "-r", "2", TERMINAL, "-w", """",				NULL}}},
+	{ MODKEY|ShiftMask,		-1,	  XK_space,  spawn,	     {.v = (const char*[]) {"tabbed", "-c", "-r", "2", TERMINAL, "-w", """",NULL}}},
 	{ MODKEY,			-1, 	  XK_v,      spawn,	     {.v = (const char*[]) {TERMINAL, FM,      			NULL}}},
 	{ MODKEY,			-1,	  XK_m,	     spawn,	     {.v = (const char*[]) {TERMINAL, SYSMON,			NULL}}},
 	{ MODKEY,			-1,	  XK_b,	     spawn,	     {.v = (const char*[]) {BROWSER,  SEARCH,  	        	NULL}}},
 	{ MODKEY,			XK_w,     XK_y,	     spawn,	     {.v = (const char*[]) {BROWSER, "yewtu.be", 		NULL}}},
+	{ MODKEY,			XK_w,	  XK_e,	     spawn,	     {.v = (const char*[]) {BROWSER, EMAIL_SITE,		NULL}}},
+	{ MODKEY,			XK_w,	  XK_f,	     spawn,	     {.v = (const char*[]) {BROWSER, "forums.freebsd.org",	NULL}}},
 	{ MODKEY,			XK_w,	  XK_l,	     spawn,	     {.v = (const char*[]) {BROWSER, "lemmy.ml",		NULL}}},
 	{ MODKEY,			XK_w,	  XK_c,	     spawn,	     {.v = (const char*[]) {BROWSER, "cboard.cprogramming.com", NULL}}},
 	{ MODKEY,			XK_w,	  XK_o,	     spawn,	     {.v = (const char*[]) {BROWSER, "man.openbsd.org",		NULL}}},
 	{ MODKEY,			XK_w,	  XK_g,	     spawn,	     {.v = (const char*[]) {BROWSER, "github.com/africavoid", 	NULL}}},
+	{ MODKEY,			XK_w,	  XK_t,	     spawn,	     {.v = (const char*[]) {BROWSER, "forums.gentoo.org",	NULL}}},
+	{ MODKEY,			XK_w,	  XK_r,	     spawn,	     {.v = (const char*[]) {BROWSER, "old.reddit.com",		NULL}}},
 	{ MODKEY,			XK_w,	  XK_a,	     spawn,	     {.v = (const char*[]) {BROWSER, "wiki.archlinux.org",	NULL}}},
 	{ MODKEY,			XK_w,	  XK_s,	     spawn,	     {.v = (const char*[]) {BROWSER, "suckless.org",		NULL}}},
 	{ MODKEY,			XK_w,	  XK_w,	     spawn,	     {.v = (const char*[]) {BROWSER, "wiby.me",			NULL}}},
 	{ MODKEY,			XK_w,	  XK_m,	     spawn,	     {.v = (const char*[]) {BROWSER, MYSITE,			NULL}}},
 	{ MODKEY,			-1,	  XK_p,	     spawn,	     {.v = (const char*[]) {"dmenu_run",			NULL}}},
+	{ MODKEY,			XK_s,	  XK_s,	     spawn,	     {.v = (const char*[]) {TERMINAL, "-e", "sh", "/home/will/.scripts/startup.sh", NULL}}},
+	{ MODKEY,			XK_s,	  XK_w,	     spawn,	     {.v = (const char*[]) {TERMINAL, "-e", "sh", "/home/will/.scripts/wifi.sh", NULL}}},
+	{ MODKEY,			XK_a,	  XK_k,	     spawn,	     {.v = (const char*[]) {"sndioctl", "output.level=+0.1",	NULL}}},
+	{ MODKEY,			XK_a,	  XK_j,	     spawn,	     {.v = (const char*[]) {"sndioctl", "output.level=-0.1",	NULL}}},
+	{ MODKEY,			XK_a,	  XK_m,	     spawn,	     {.v = (const char*[]) {"sndioctl", "output.mute=1",	NULL}}},
+	{ MODKEY,			XK_a,	  XK_u,	     spawn,	     {.v = (const char*[]) {"sndioctl", "output.mute=0",	NULL}}},
 	{ MODKEY,			XK_f,     XK_b,	     togglebar,	     {0}},
-	{ MODKEY,			XK_f,	  XK_s,	     schemeCycle,     {0}},
+	{ MODKEY,			XK_f,	  XK_s,	     schemeCycle,    {0}},
 	{ MODKEY,                       -1,	  XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       -1,	  XK_k,      focusstack,     {.i = -1 } },
 	{ MODKEY,                       -1,       XK_i,      incnmaster,     {.i = +1 } },
@@ -133,15 +142,8 @@ static const Key keys[] = {
 /* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */
 static const Button buttons[] = {
 	/* click                event mask      button          function        argument */
-	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
-	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
-	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
 	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
-	{ ClkTagBar,            0,              Button1,        view,           {0} },
-	{ ClkTagBar,            0,              Button3,        toggleview,     {0} },
-	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
-	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
 };
 
