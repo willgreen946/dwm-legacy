@@ -106,11 +106,19 @@ static const Key keys[] = {
 	{ MODKEY,			-1,	  XK_p,	     spawn,	     {.v = (const char*[]) {"dmenu_run",			NULL}}},
 	{ MODKEY,			XK_s,	  XK_s,	     spawn,	     {.v = (const char*[]) {TERMINAL, "-e", "sh", "/home/will/.scripts/startup.sh", NULL}}},
 	{ MODKEY,			XK_s,	  XK_w,	     spawn,	     {.v = (const char*[]) {TERMINAL, "-e", "sh", "/home/will/.scripts/wifi.sh", NULL}}},
+	#ifdef linux 
+	{ MODKEY,                       XK_a,     XK_k,      spawn,          {.v = (const char*[]) {"amixer",   "set", "Master", "10%+", NULL}}},
+        { MODKEY,                       XK_a,     XK_j,      spawn,          {.v = (const char*[]) {"amixer",   "set", "Master", "10%-", NULL}}},
+        { MODKEY,                       XK_a,     XK_m,      spawn,          {.v = (const char*[]) {"amixer",   "set", "Master", "mute", NULL}}},
+        { MODKEY,                       XK_a,     XK_u,      spawn,          {.v = (const char*[]) {"amixer",   "set", "Master", "unmute", NULL}}},
+        { MODKEY,                       XK_a,     XK_a,      spawn,          {.v = (const char*[]) {TERMINAL,   "alsamixer",            NULL}}},
+	#endif 
+	#ifdef __OpenBSD__ 
 	{ MODKEY,			XK_a,	  XK_k,	     spawn,	     {.v = (const char*[]) {"sndioctl", "output.level=+0.1",	NULL}}},
 	{ MODKEY,			XK_a,	  XK_j,	     spawn,	     {.v = (const char*[]) {"sndioctl", "output.level=-0.1",	NULL}}},
 	{ MODKEY,			XK_a,	  XK_m,	     spawn,	     {.v = (const char*[]) {"sndioctl", "output.mute=1",	NULL}}},
 	{ MODKEY,			XK_a,	  XK_u,	     spawn,	     {.v = (const char*[]) {"sndioctl", "output.mute=0",	NULL}}},
-	{ MODKEY,			XK_a,	  XK_a,	     spawn,	     {.v = (const char*[]) {TERMINAL,	"alsamixer",		NULL}}},
+	#endif
 	{ MODKEY,			XK_f,     XK_b,	     togglebar,	     {0}},
 	{ MODKEY,			XK_f,	  XK_s,	     schemeCycle,    {0}},
 	{ MODKEY,                       -1,	  XK_j,      focusstack,     {.i = +1 } },
