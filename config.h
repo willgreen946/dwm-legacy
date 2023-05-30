@@ -110,6 +110,7 @@ static const Key keys[] = {
 	{ MODKEY,			XK_a,	  XK_j,	     spawn,	     {.v = (const char*[]) {"sndioctl", "output.level=-0.1",	NULL}}},
 	{ MODKEY,			XK_a,	  XK_m,	     spawn,	     {.v = (const char*[]) {"sndioctl", "output.mute=1",	NULL}}},
 	{ MODKEY,			XK_a,	  XK_u,	     spawn,	     {.v = (const char*[]) {"sndioctl", "output.mute=0",	NULL}}},
+	{ MODKEY,			XK_a,	  XK_a,	     spawn,	     {.v = (const char*[]) {TERMINAL,	"alsamixer",		NULL}}},
 	{ MODKEY,			XK_f,     XK_b,	     togglebar,	     {0}},
 	{ MODKEY,			XK_f,	  XK_s,	     schemeCycle,    {0}},
 	{ MODKEY,                       -1,	  XK_j,      focusstack,     {.i = +1 } },

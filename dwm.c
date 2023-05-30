@@ -195,7 +195,6 @@ static void restack(Monitor *m);
 static void run(void);
 static void scan(void);
 static void schemeCycle(const Arg*);
-static void schemeToggle(const Arg*);
 static int sendevent(Client *c, Atom proto);
 static void sendmon(Client *c, Monitor *m);
 static void setclientstate(Client *c, long state);
@@ -1429,27 +1428,6 @@ schemeCycle(const Arg *arg) {
 }
 
 void
-schemeToggle(const Arg *arg) {
-
-	int numThemePairs = LENGTH(colors) / 4;
-	int sheme = SchemeNorm / 2;
-
-	if (sheme / 2 > numThemePairs-1) {
-		return;
-	}
-
-	if (sheme % 2 == 0) {
-		SchemeNorm += 2;
-		SchemeSel += 2;
-	} else {
-		SchemeNorm -= 2;
-		SchemeSel -= 2;
-	}
-
-	drawbars();
-}
-
-void
 sendmon(Client *c, Monitor *m)
 {
 	if (c->mon == m)
@@ -1738,19 +1716,19 @@ tile(Monitor *m)
 		mw = m->ww;
 	for (i = my = ty = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next), i++)
 		if (i < m->nmaster) {
-			//h = (m->wh - my) / (MIN(n, m->nmaster) - i);
 			h = (m->wh - my) * (c->cfact / mfacts);
 			resize(c, m->wx, m->wy + my, mw - (2*c->bw), h - (2*c->bw), 0);
-			if (my + HEIGHT(c) < m->wh)
+			if (my + HEIGHT(c) < m->wh){
 				my += HEIGHT(c);
 				mfacts -= c->cfact;
+			}
 		} else {
-		//	h = (m->wh - ty) / (n - i);
 			h = (m->wh -ty) * (c->cfact / sfacts);	
 			resize(c, m->wx + mw, m->wy + ty, m->ww - mw - (2*c->bw), h - (2*c->bw), 0);
-			if (ty + HEIGHT(c) < m->wh)
+			if (ty + HEIGHT(c) < m->wh){
 				ty += HEIGHT(c);
 				sfacts -= c->cfact;
+			}
 		}
 }
 
