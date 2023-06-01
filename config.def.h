@@ -106,7 +106,7 @@ static const Key keys[] = {
 	{ MODKEY,			-1,	  XK_p,	     spawn,	     {.v = (const char*[]) {"dmenu_run",			NULL}}},
 	{ MODKEY,			XK_s,	  XK_s,	     spawn,	     {.v = (const char*[]) {TERMINAL, "-e", "sh", "/home/will/.scripts/startup.sh", NULL}}},
 	{ MODKEY,			XK_s,	  XK_w,	     spawn,	     {.v = (const char*[]) {TERMINAL, "-e", "sh", "/home/will/.scripts/wifi.sh", NULL}}},
-	#ifdef linux 
+	#ifdef __linux 
 	{ MODKEY,                       XK_a,     XK_k,      spawn,          {.v = (const char*[]) {"amixer",   "set", "Master", "10%+", NULL}}},
         { MODKEY,                       XK_a,     XK_j,      spawn,          {.v = (const char*[]) {"amixer",   "set", "Master", "10%-", NULL}}},
         { MODKEY,                       XK_a,     XK_m,      spawn,          {.v = (const char*[]) {"amixer",   "set", "Master", "mute", NULL}}},
