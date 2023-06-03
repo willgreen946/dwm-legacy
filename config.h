@@ -8,10 +8,9 @@ static const int topbar             = 0;        /* 0 means bottom bar */
 static const int user_bh	    = 16;
 static const char *fonts[]          = { "ubuntu:size=8" };
 static const char dmenufont[]       = "ubuntu:size=8";
-static const char col_gray1[]       = "#121212";
-static const char col_gray2[]       = "#121212"; // Grey
-static const char col_gray3[]       = "#f0f0f0"; // White
-static const char col_gray4[]       = "#121212";
+static const char col_gray[]       = "#121212";
+static const char col_purple[]      = "#54487a"; // Purple 
+static const char col_white[]       = "#f0f0f0"; // White
 static const char col_yellow[]      = "#f2ca30"; // Yellow
 static const char s_base00[]        = "#f26711"; // Orange
 static const char s_base01[]        = "#121212";
@@ -25,8 +24,8 @@ static const char s_base3[]         = "#f0f0f0";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	// Yellow Theme
-        { col_gray3, col_gray1, col_gray2 }, /* SchemeNorm orig */
-        { col_gray4, col_yellow,  col_yellow  }, /* SchemeSel orig */
+        { col_white, col_gray, col_purple }, /* SchemeNorm orig */
+        { col_gray, col_yellow,  col_yellow  }, /* SchemeSel orig */
 
 	// Red Theme
 	{ s_base3, s_base2, s_base2 },      /* SchemeNorm dark */
