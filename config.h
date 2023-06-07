@@ -39,7 +39,7 @@ static const char *colors[][3]      = {
 /* tagging */
 static const char *tags[] = { "[1]", "[2]", "[3]", "[4]", "[5]", "[6]", "[7]", "[8]"};
 
-#define BROWSER "qutebrowser"
+#define BROWSER "vieb"
 static const Rule rules[] = {
 	/* xprop(1):
 	 *	WM_CLASS(STRING) = instance, class
@@ -134,6 +134,11 @@ static const Key keys[] = {
 	{ MODKEY,             		XK_f,     XK_k,      killclient,     {0} },
 	{ MODKEY,             		XK_f,     XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,             		XK_f,	  XK_m,      setlayout,      {.v = &layouts[1]} },
+	{ MODKEY,			XK_r,	  XK_h,      resizemouse,    {0} },
+	{ MODKEY,			XK_r,	  XK_l,	     resizemouse,    {0} },
+	{ MODKEY,			XK_r,	  XK_j,	     movemouse,	     {0} },
+	{ MODKEY,			XK_r,	  XK_k,	     movemouse,	     {0} },
+	{ MODKEY,			XK_r,	  XK_r,	     togglefloating, {0} },
 	TAGKEYS(                        -1, 	  XK_1,                    0)
 	TAGKEYS(                        -1,	  XK_2,                    1)
 	TAGKEYS(                        -1,       XK_3,                    2)
