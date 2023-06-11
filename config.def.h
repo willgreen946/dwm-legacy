@@ -39,7 +39,14 @@ static const char *colors[][3]      = {
 /* tagging */
 static const char *tags[] = { "[1]", "[2]", "[3]", "[4]", "[5]", "[6]", "[7]", "[8]"};
 
+#ifdef __linux
 #define BROWSER "vieb"
+#endif
+
+#ifdef __OpenBSD__
+#define BROWSER "qutebrowser"
+#endif
+
 static const Rule rules[] = {
 	/* xprop(1):
 	 *	WM_CLASS(STRING) = instance, class

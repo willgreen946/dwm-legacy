@@ -39,7 +39,14 @@ static const char *colors[][3]      = {
 /* tagging */
 static const char *tags[] = { "[1]", "[2]", "[3]", "[4]", "[5]", "[6]", "[7]", "[8]"};
 
+#ifdef __linux
 #define BROWSER "vieb"
+#endif
+
+#ifdef __OpenBSD__
+#define BROWSER "qutebrowser"
+#endif
+
 static const Rule rules[] = {
 	/* xprop(1):
 	 *	WM_CLASS(STRING) = instance, class
@@ -87,7 +94,6 @@ alt + w will allow to open certain pages within a browser */
 static const Key keys[] = {
 	/* modifier                     chain key key        function        argument */
 	{ MODKEY,           	-1,       XK_space,  spawn,	{.v = (const char*[]) {TERMINAL, 	       			 NULL}}},
-	{ MODKEY|ShiftMask,	-1,	  XK_space,  spawn,	{.v = (const char*[]) {"tabbed", "-c", "-r", "2", TERMINAL, "-w", """",NULL}}},
 	{ MODKEY,		-1, 	  XK_f,      spawn,	{.v = (const char*[]) {TERMINAL, FM,     			 NULL}}},
 	{ MODKEY,		XK_p,	  XK_m,	     spawn,	{.v = (const char*[]) {TERMINAL, SYSMON, 			 NULL}}},
 	{ MODKEY,		XK_w,	  XK_space,  spawn,	{.v = (const char*[]) {BROWSER,  SEARCH, 			 NULL}}},
@@ -116,32 +122,32 @@ static const Key keys[] = {
 	{ MODKEY,		XK_m,	  XK_j,	     spawn,	{.v = (const char*[]) {"sh","echo", "30", ">", BRIGHTNESS_PATH,  NULL}}}, 
 	#endif 
 	#ifdef __OpenBSD__ 
-	{ MODKEY,		XK_a,	  XK_k,	     spawn,	{.v = (const char*[]) {"sndioctl", "output.level=+0.1",	NULL}}},
-	{ MODKEY,		XK_a,	  XK_j,	     spawn,	{.v = (const char*[]) {"sndioctl", "output.level=-0.1",	NULL}}},
-	{ MODKEY,		XK_a,	  XK_m,	     spawn,	{.v = (const char*[]) {"sndioctl", "output.mute=1",	NULL}}},
-	{ MODKEY,		XK_a,	  XK_u,	     spawn,	{.v = (const char*[]) {"sndioctl", "output.mute=0",	NULL}}},
+	{ MODKEY,		XK_a,	  XK_k,	     spawn,	{.v = (const char*[]) {"sndioctl", "output.level=+0.1",		 NULL}}},
+	{ MODKEY,		XK_a,	  XK_j,	     spawn,	{.v = (const char*[]) {"sndioctl", "output.level=-0.1",		 NULL}}},
+	{ MODKEY,		XK_a,	  XK_m,	     spawn,	{.v = (const char*[]) {"sndioctl", "output.mute=1",		 NULL}}},
+	{ MODKEY,		XK_a,	  XK_u,	     spawn,	{.v = (const char*[]) {"sndioctl", "output.mute=0",		 NULL}}},
 	#endif
 	{ MODKEY,		XK_s,     XK_b,	     togglebar,	     {0}},
 	{ MODKEY,		XK_s,	  XK_s,	     schemeCycle,    {0}},
-	{ MODKEY,               -1,	  XK_j,      focusstack,     {.i = +1 } },
-	{ MODKEY,               -1,	  XK_k,      focusstack,     {.i = -1 } },
-	{ MODKEY,               -1,       XK_i,      incnmaster,     {.i = +1 } },
-	{ MODKEY,               -1,       XK_d,      incnmaster,     {.i = -1 } },
-	{ MODKEY|ShiftMask,     -1,       XK_h,      setmfact,       {.f = -0.05} },
-	{ MODKEY|ShiftMask,     -1,	  XK_l,      setmfact,       {.f = +0.05} },
-	{ MODKEY|ShiftMask,     -1,	  XK_k,      setcfact,       {.f = +0.25} },
-	{ MODKEY|ShiftMask,     -1,	  XK_j,      setcfact,       {.f = -0.25} },
-	{ MODKEY,             	XK_s,     XK_r,      setcfact,       {.f =  0.00} },
-	{ MODKEY,               -1,       XK_Return, zoom,           {0} },
-	{ MODKEY,               -1,       XK_Tab,    view,           {0} },
-	{ MODKEY,             	XK_s,     XK_k,      killclient,     {0} },
-	{ MODKEY,             	XK_s,     XK_t,      setlayout,      {.v = &layouts[0]} },
-	{ MODKEY,             	XK_s,	  XK_m,      setlayout,      {.v = &layouts[1]} },
-	{ MODKEY,		XK_r,	  XK_h,      resizemouse,    {0} },
-	{ MODKEY,		XK_r,	  XK_l,	     resizemouse,    {0} },
-	{ MODKEY,		XK_r,	  XK_j,	     movemouse,	     {0} },
-	{ MODKEY,		XK_r,	  XK_k,	     movemouse,	     {0} },
-	{ MODKEY,		XK_r,	  XK_r,	     togglefloating, {0} },
+	{ MODKEY,               -1,	  XK_j,      focusstack,     {.i = +1 }},
+	{ MODKEY,               -1,	  XK_k,      focusstack,     {.i = -1 }},
+	{ MODKEY,               -1,       XK_i,      incnmaster,     {.i = +1 }},
+	{ MODKEY,               -1,       XK_d,      incnmaster,     {.i = -1 }},
+	{ MODKEY|ShiftMask,     -1,       XK_h,      setmfact,       {.f = -0.05}},
+	{ MODKEY|ShiftMask,     -1,	  XK_l,      setmfact,       {.f = +0.05}},
+	{ MODKEY|ShiftMask,     -1,	  XK_k,      setcfact,       {.f = +0.25}},
+	{ MODKEY|ShiftMask,     -1,	  XK_j,      setcfact,       {.f = -0.25}},
+	{ MODKEY,             	XK_s,     XK_r,      setcfact,       {.f =  0.00}},
+	{ MODKEY,               -1,       XK_Return, zoom,           {0}},
+	{ MODKEY,               -1,       XK_Tab,    view,           {0}},
+	{ MODKEY,             	XK_s,     XK_k,      killclient,     {0}},
+	{ MODKEY,             	XK_s,     XK_t,      setlayout,      {.v = &layouts[0]}},
+	{ MODKEY,             	XK_s,	  XK_m,      setlayout,      {.v = &layouts[1]}},
+	{ MODKEY,		XK_r,	  XK_h,      resizemouse,    {0}},
+	{ MODKEY,		XK_r,	  XK_l,	     resizemouse,    {0}},
+	{ MODKEY,		XK_r,	  XK_j,	     movemouse,	     {0}},
+	{ MODKEY,		XK_r,	  XK_k,	     movemouse,	     {0}},
+	{ MODKEY,		XK_r,	  XK_r,	     togglefloating, {0}},
 	TAGKEYS(                -1, 	  XK_1,                    0)
 	TAGKEYS(                -1,	  XK_2,                    1)
 	TAGKEYS(                -1,       XK_3,                    2)
@@ -150,7 +156,7 @@ static const Key keys[] = {
 	TAGKEYS(		-1,	  XK_6,			   5)
 	TAGKEYS(		-1,	  XK_7,			   6)
 	TAGKEYS(		-1,	  XK_8,			   7)
-	{ MODKEY,               XK_s,     XK_q,      quit,           {0} },
+	{ MODKEY,               XK_s,     XK_q,      quit,         {0}},
 		
 };
 
