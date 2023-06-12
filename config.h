@@ -55,10 +55,13 @@ static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
 static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
 
+#include "fibonacci.c"
 static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "[T]",      tile },    /* first entry is default */
 	{ "[M]",      monocle },
+	{ "[S]",      spiral },
+	{ "[D]",      dwindle },
 };
 
 /* key definitions */
@@ -96,12 +99,13 @@ static const Key keys[] = {
 	{ MODKEY,		XK_p,	  XK_p,	     spawn,	{.v = (const char*[]) {"dmenu_run",				 NULL}}},
 	/* scripts */
 	#ifdef __linux
-	{ MODKEY,		XK_s,	  XK_w,	     spawn,	{.v = (const char*[]) {TERMINAL, "sh", "/home/will/.scripts/wifi.sh", "-o", "linux", "-i", "wlan0", NULL}}},
-	{ MODKEY,		XK_s,	  XK_b,	     spawn,	{.v = (const char*[]) {TERMINAL, "doas", "nvim", "/sys/class/backlight/nv_backlight/brightness", NULL}}},
+	{ MODKEY,		XK_s,	  XK_n,	     spawn,	{.v = (const char*[]) {TERMINAL, "sh", "/home/will/.scripts/wifi.sh", "-o", "linux", "-i", "wlan0", NULL}}},
+	{ MODKEY,		XK_s,	  XK_b,	     spawn,	{.v = (const char*[]) {TERMINAL, "doas", "nvim", "/sys/class/backlight/nv_backlight/brightness",    NULL}}},
 	#endif
 	#ifdef __OpenBSD__
-	{ MODKEY,		XK_s,	  XK_w,	     spawn,	{.v = (const char*[]) {TERMINAL, "sh //home//will//.scripts//wifi.sh -o openbsd -i iwm0", NULL}}},
+	{ MODKEY,		XK_s,	  XK_n,	     spawn,	{.v = (const char*[]) {TERMINAL, "sh", "home/will/.scripts/wifi.sh", "-o", "openbsd", "-i" "iwm0",  NULL}}},
 	#endif
+	{ MODKEY,		XK_s,	  XK_w,	     spawn,	{.v = (const char*[]) {TERMINAL, "curl", "wttr.in", "&&", "read i", NULL}}},
 	/* web  XK_w is normal websites XK_o is other websites since theres a lot of websites I want to have binds for*/
 	{ MODKEY,		XK_w,	  XK_space,  spawn,	{.v = (const char*[]) {BROWSER,  SEARCH, 			 NULL}}},
 	{ MODKEY,		XK_w,     XK_y,	     spawn,	{.v = (const char*[]) {BROWSER, "yewtu.be", 			 NULL}}},
@@ -127,6 +131,7 @@ static const Key keys[] = {
 	{ MODKEY,		XK_o,	  XK_g,	     spawn,	{.v = (const char*[]) {BROWSER, "forums.gentoo.org",		 NULL}}},
 	{ MODKEY,		XK_o,	  XK_d,	     spawn,	{.v = (const char*[]) {BROWSER, "daemonforums.org",		 NULL}}},
 	{ MODKEY,		XK_o,	  XK_a,	     spawn,	{.v = (const char*[]) {BROWSER, "forums.archlinux.org",		 NULL}}},
+	{ MODKEY,		XK_o,	  XK_k,	     spawn,	{.v = (const char*[]) {BROWSER, "wiki.linuxquestions.org/wiki/Main_Page", NULL}}},
 	#ifdef __linux 
 	/* Linux specific commands */
 	/* audio */
@@ -146,10 +151,12 @@ static const Key keys[] = {
 	#endif
 	/* dwm functions */
 	{ MODKEY,		XK_f,     XK_b,	     togglebar,	     {0}},
-	{ MODKEY,		XK_f,	  XK_s,	     schemeCycle,    {0}},
+	{ MODKEY,		XK_f,	  XK_c,	     schemeCycle,    {0}},
 	{ MODKEY,		XK_f,	  XK_k,	     killclient,     {0}},
 	{ MODKEY,		XK_f,	  XK_t,      setlayout,	     {.v = &layouts[0]}},
 	{ MODKEY,		XK_f,	  XK_m,	     setlayout,	     {.v = &layouts[1]}},
+	{ MODKEY,		XK_f,	  XK_s,	     setlayout,	     {.v = &layouts[2]}},
+	{ MODKEY,		XK_f,	  XK_d,	     setlayout,	     {.v = &layouts[3]}},
 	/* navigation */
 	{ MODKEY,               -1,	  XK_j,      focusstack,     {.i = +1 }},
 	{ MODKEY,               -1,	  XK_k,      focusstack,     {.i = -1 }},
