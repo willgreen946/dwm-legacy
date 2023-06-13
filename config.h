@@ -6,40 +6,36 @@ static const unsigned int snap      = 16;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 0;        /* 0 means bottom bar */
 static const int user_bh	    = 16;
-static const char *fonts[]          = { "ubuntu:size=8" };
-static const char dmenufont[]       = "ubuntu:size=8";
-static const char col_gray[]       = "#121212";
-static const char col_purple[]      = "#54487a"; // Purple 
-static const char col_white[]       = "#f0f0f0"; // White
-static const char col_yellow[]      = "#f2ca30"; // Yellow
-static const char s_base00[]        = "#f26711"; // Orange
-static const char s_base01[]        = "#121212";
-static const char s_base02[]        = "#121212";
-static const char s_base03[]        = "#f2ca30";
-static const char s_base0[]         = "#eb0028";
-static const char s_base1[]         = "#121212";
-static const char s_base2[]         = "#121212";
-static const char s_base3[]         = "#f0f0f0";
+static const char *fonts[]          = { "terminus:size=8" };
+static const char dmenufont[]       = "terminus:size=8";
+static const char black[]      	    = "#000000";
+static const char purple[]          = "#54487a"; // Purple 
+static const char white[]           = "#ffffff"; // White
+static const char yellow[]          = "#f2ca30"; // Yellow
+static const char orange[]          = "#f26711"; // Orange
+static const char matrix_green[]    = "#008f11";
+static const char matrix_dark[]	    = "#003b00";
+
 
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	// Yellow Theme
-        { col_white, col_gray, col_purple }, /* SchemeNorm orig */
-        { col_gray, col_yellow,  col_yellow  }, /* SchemeSel orig */
+        { white, black, purple }, /* SchemeNorm orig */
+        { black, yellow,yellow  }, /* SchemeSel orig */
 
 	// Red Theme
-	{ s_base3, s_base2, s_base2 },      /* SchemeNorm dark */
-       	{ s_base2, s_base0, s_base0 },      /* SchemeSel dark */
+	{ matrix_green, black, matrix_dark },      /* matrix */
+       	{ black, matrix_green, matrix_green },      
 	
 	// Orange Theme
-       	{ s_base3, s_base2, s_base2 },     /* SchemeNorm light */
-       	{ s_base2, s_base00, s_base00},      /* SchemeSel light */
+       	{ white, black, black },     /* SchemeNorm light */
+       	{ black, orange, orange},      /* SchemeSel light */
 };
 
 /* tagging */
 static const char *tags[] = { "[1]", "[2]", "[3]", "[4]", "[5]", "[6]", "[7]", "[8]"};
 
-#define BROWSER "qutebrowser"
+#define BROWSER "vieb"
 static const Rule rules[] = {
 	/* xprop(1):
 	 *	WM_CLASS(STRING) = instance, class
