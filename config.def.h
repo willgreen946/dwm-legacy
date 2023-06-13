@@ -19,13 +19,11 @@ static const char matrix_dark[]	    = "#003b00";
 
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
+	{ matrix_green, black, matrix_dark },
+	{ black, matrix_green, matrix_green },
 	// Yellow Theme
-        { white, black, purple }, /* SchemeNorm orig */
-        { black, yellow,yellow  }, /* SchemeSel orig */
-
-	// Red Theme
-	{ matrix_green, black, matrix_dark },      /* matrix */
-       	{ black, matrix_green, matrix_green },      
+        { white, black, purple }, 
+        { black, yellow,yellow  },
 	
 	// Orange Theme
        	{ white, black, black },     /* SchemeNorm light */
