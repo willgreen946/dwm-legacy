@@ -39,7 +39,7 @@ static const char *colors[][3]      = {
 /* tagging */
 static const char *tags[] = { "[1]", "[2]", "[3]", "[4]", "[5]", "[6]", "[7]", "[8]"};
 
-#define BROWSER "vieb"
+#define BROWSER "qutebrowser"
 static const Rule rules[] = {
 	/* xprop(1):
 	 *	WM_CLASS(STRING) = instance, class
@@ -103,7 +103,7 @@ static const Key keys[] = {
 	{ MODKEY,		XK_s,	  XK_b,	     spawn,	{.v = (const char*[]) {TERMINAL, "doas", "nvim", "/sys/class/backlight/nv_backlight/brightness",    NULL}}},
 	#endif
 	#ifdef __OpenBSD__
-	{ MODKEY,		XK_s,	  XK_n,	     spawn,	{.v = (const char*[]) {TERMINAL, "sh", "home/will/.scripts/wifi.sh", "-o", "openbsd", "-i" "iwm0",  NULL}}},
+	{ MODKEY,		XK_s,	  XK_n,	     spawn,	{.v = (const char*[]) {TERMINAL, "doas", "sh", "home/will/.scripts/obsd.sh", NULL}}},
 	#endif
 	{ MODKEY,		XK_s,	  XK_w,	     spawn,	{.v = (const char*[]) {TERMINAL, "curl", "wttr.in", "&&", "read i", NULL}}},
 	/* web  XK_w is normal websites XK_o is other websites since theres a lot of websites I want to have binds for*/
@@ -130,6 +130,7 @@ static const Key keys[] = {
 	{ MODKEY,		XK_o,	  XK_equal,  spawn,	{.v = (const char*[]) {BROWSER, "legacy.cplusplus.com/forum",	 NULL}}},
 	{ MODKEY,		XK_o,	  XK_g,	     spawn,	{.v = (const char*[]) {BROWSER, "forums.gentoo.org",		 NULL}}},
 	{ MODKEY,		XK_o,	  XK_d,	     spawn,	{.v = (const char*[]) {BROWSER, "daemonforums.org",		 NULL}}},
+	{ MODKEY,		XK_o,	  XK_o,	     spawn,	{.v = (const char*[]) {BROWSER,	"https://www.linuxquestions.org/questions/%2Absd-17/", NULL}}},
 	{ MODKEY,		XK_o,	  XK_a,	     spawn,	{.v = (const char*[]) {BROWSER, "forums.archlinux.org",		 NULL}}},
 	{ MODKEY,		XK_o,	  XK_k,	     spawn,	{.v = (const char*[]) {BROWSER, "wiki.linuxquestions.org/wiki/Main_Page", NULL}}},
 	#ifdef __linux 
