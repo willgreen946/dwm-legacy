@@ -33,7 +33,7 @@ static const char *colors[][3]      = {
 /* tagging */
 static const char *tags[] = { "[1]", "[2]", "[3]", "[4]", "[5]", "[6]", "[7]", "[8]"};
 
-#define BROWSER "vieb"
+#define BROWSER "qutebrowser"
 static const Rule rules[] = {
 	/* xprop(1):
 	 *	WM_CLASS(STRING) = instance, class
@@ -101,8 +101,8 @@ static const Key keys[] = {
 	#endif
 	{ MODKEY,		XK_s,	  XK_w,	     spawn,	{.v = (const char*[]) {TERMINAL, "curl", "wttr.in", "&&", "read i", NULL}}},
 	/* web  XK_w is normal websites XK_o is other websites since theres a lot of websites I want to have binds for*/
-	{ MODKEY,		XK_w,	  XK_space,  spawn,	{.v = (const char*[]) {BROWSER,  SEARCH, 			 NULL}}},
-	{ MODKEY,		XK_w,     XK_y,	     spawn,	{.v = (const char*[]) {BROWSER, "yewtu.be", 			 NULL}}},
+	{ MODKEY,		XK_w,	  XK_1,      spawn,	{.v = (const char*[]) {BROWSER,  SEARCH, 			 NULL}}},
+	{ MODKEY,		XK_w,     XK_2,	     spawn,	{.v = (const char*[]) {BROWSER, "yewtu.be", 			 NULL}}},
 	{ MODKEY,		XK_w,	  XK_e,	     spawn,	{.v = (const char*[]) {BROWSER, EMAIL_SITE, 			 NULL}}},
 	{ MODKEY,		XK_w,	  XK_f,	     spawn,	{.v = (const char*[]) {BROWSER, "forums.freebsd.org", 		 NULL}}},
 	{ MODKEY,		XK_w,	  XK_l,	     spawn,	{.v = (const char*[]) {BROWSER, "lemmy.ml", 		   	 NULL}}},
@@ -117,14 +117,14 @@ static const Key keys[] = {
 	{ MODKEY,		XK_w,	  XK_m,	     spawn,	{.v = (const char*[]) {BROWSER, MYSITE,				 NULL}}},
 	{ MODKEY,		XK_w,	  XK_b,	     spawn,	{.v = (const char*[]) {BROWSER, BOOKMARKS,			 NULL}}},
 	{ MODKEY,		XK_w,	  XK_0,	     spawn,	{.v = (const char*[]) {BROWSER, "bbc.com/iplayer",		 NULL}}},
-	{ MODKEY,		XK_w,	  XK_1,      spawn,	{.v = (const char*[]) {BROWSER, SEARCH_ALT,			 NULL}}},
-	{ MODKEY,		XK_w,	  XK_q,	     spawn,	{.v = (const char*[]) {BROWSER, "vid.puffyan.us",		 NULL}}},
-	{ MODKEY,		XK_w,	  XK_2,	     spawn,	{.v = (const char*[]) {BROWSER,	"linuxquestions.org",		 NULL}}},
-	{ MODKEY,		XK_w,	  XK_3,	     spawn,	{.v = (const char*[]) {BROWSER,	"cboard.cprogramming.com",	 NULL}}},
+	{ MODKEY,		XK_w,	  XK_space,  spawn,	{.v = (const char*[]) {BROWSER, SEARCH_ALT,			 NULL}}},
+	{ MODKEY,		XK_w,	  XK_3,	     spawn,	{.v = (const char*[]) {BROWSER, "vid.puffyan.us",		 NULL}}},
+	{ MODKEY,		XK_w,	  XK_q,	     spawn,	{.v = (const char*[]) {BROWSER,	"linuxquestions.org",		 NULL}}},
+	{ MODKEY,		XK_w,	  XK_4,	     spawn,	{.v = (const char*[]) {BROWSER,	"cboard.cprogramming.com",	 NULL}}},
 	{ MODKEY,		XK_w,	  XK_equal,  spawn,	{.v = (const char*[]) {BROWSER, "legacy.cplusplus.com/forum",	 NULL}}},
-	{ MODKEY,		XK_w,	  XK_4,	     spawn,	{.v = (const char*[]) {BROWSER, "forums.gentoo.org",		 NULL}}},
+	{ MODKEY,		XK_w,	  XK_5,	     spawn,	{.v = (const char*[]) {BROWSER, "forums.gentoo.org",		 NULL}}},
 	{ MODKEY,		XK_w,	  XK_d,	     spawn,	{.v = (const char*[]) {BROWSER, "daemonforums.org",		 NULL}}},
-	{ MODKEY,		XK_w,	  XK_5,	     spawn,	{.v = (const char*[]) {BROWSER,	"https://www.linuxquestions.org/questions/%2Absd-17/", NULL}}},
+	{ MODKEY,		XK_w,	  XK_n,	     spawn,	{.v = (const char*[]) {BROWSER,	"https://www.linuxquestions.org/questions/%2Absd-17/", NULL}}},
 	{ MODKEY,		XK_w,	  XK_6,	     spawn,	{.v = (const char*[]) {BROWSER, "forums.archlinux.org",		 NULL}}},
 	{ MODKEY,		XK_w,	  XK_k,	     spawn,	{.v = (const char*[]) {BROWSER, "wiki.linuxquestions.org/wiki/Main_Page", NULL}}},
 	#ifdef __linux 
