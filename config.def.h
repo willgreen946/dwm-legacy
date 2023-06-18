@@ -101,7 +101,7 @@ static const Key keys[] = {
 	{ MODKEY,		XK_p,	  XK_p,	     spawn,	{.v = (const char*[]) {"dmenu_run",				 NULL}}},
 	/* scripts */
 	#ifdef __linux
-	{ MODKEY,		XK_s,	  XK_n,	     spawn,	{.v = (const char*[]) {TERMINAL, "sh", WIFISCRIPT, "-o", "linux", "-i", NTWK , NULL}}},
+	{ MODKEY,		XK_s,	  XK_n,	     spawn,	{.v = (const char*[]) {TERMINAL, "sh", WIFISCRIPT, "-o", "linux", "-i", NTWRK , NULL}}},
 	#endif
 	#ifdef __OpenBSD__
 	{ MODKEY,		XK_s,	  XK_n,	     spawn,	{.v = (const char*[]) {TERMINAL, "doas", "sh", "home/will/.scripts/obsd.sh", NULL}}},
